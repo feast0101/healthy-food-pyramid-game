@@ -17,7 +17,7 @@ The main goal is to help players identify and categorize different food items in
 -   **Shuffled Gameplay**: Food items are randomized each time for replayability.
 
 ## How to Play
-1.  Open `index.html` in your web browser.
+1.  Open [`index.html`](https://feast0101.github.io/healthy-food-pyramid-game/) in your web browser.
 2.  Drag a food item from the right-side grid.
 3.  Drop it onto the correct colorful layer of the pyramid.
 4.  Listen for the "pop" (correct) or "buzz" (incorrect)!
