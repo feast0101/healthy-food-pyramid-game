@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Eating Pyramid Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <h1>Healthy Eating Pyramid</h1>
+        <p class="instruction">Drag the food to the correct layer of the pyramid!</p>
+
+        <div class="game-area">
+            <div class="pyramid-container">
+                <!-- Pyramid Top Layer -->
+                <div class="pyramid-layer layer-top" data-layer="fats">
+                    <span class="layer-label">Fats, Oil, Salt, Sugar</span>
+                </div>
+
+                <!-- Pyramid Level 3 -->
+                <div class="pyramid-layer layer-protein" data-layer="protein">
+                    <span class="layer-label">Protein</span>
+                </div>
+
+                <!-- Pyramid Level 2 -->
+                <div class="pyramid-layer layer-vitamins" data-layer="vitamins">
+                    <span class="layer-label">Vitamins & Minerals</span>
+                </div>
+
+                <!-- Pyramid Bottom -->
+                <div class="pyramid-layer layer-carbs" data-layer="carbohydrates">
+                    <span class="layer-label">Carbohydrates</span>
+                </div>
+            </div>
+
+            <div class="foods-container" id="foods-container">
+                <!-- Food items will be generated here by JS -->
+            </div>
+        </div>
+
+        <div id="score-display">Score: 0 / 10</div>
+        <div id="message-area" class="hidden"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

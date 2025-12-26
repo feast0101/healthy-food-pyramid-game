@@ -1,0 +1,281 @@
+:root {
+    --bg-color: #ffe0b2;
+    /* Light orange background from chart */
+    --text-color: #333;
+    --fats-color: #81c784;
+    /* Greenish top */
+    --protein-color: #4fc3f7;
+    /* Blueish middle */
+    --grains-color: #ffb74d;
+    /* Orangey middle */
+    --veg-color: #4db6ac;
+    /* Tealish bottom */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Game Layout */
+.game-container {
+    text-align: center;
+    max-width: 1200px;
+    /* Wider to fit pyramid and wide food grid side-by-side */
+    width: 95%;
+    background: linear-gradient(to bottom right, #fff8e1, #ffecb3);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    color: #0277bd;
+}
+
+.game-area {
+    display: flex;
+    flex-direction: row;
+    /* Ensure side-by-side */
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* 3D Pyramid Styling */
+/* 3D Triangle Pyramid Styling */
+.pyramid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 660px;
+    /* Adjusted for wider base */
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+    /* Shadow for the whole shape */
+}
+
+.pyramid-layer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 800;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+    position: relative;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: -2px;
+    /* Slight overlap to avoid gaps */
+
+    /* 3D Gradient Effect */
+    /* Light on left, Darker on right to simulate 3D corner */
+}
+
+/* Layer Specifics for Perfect Triangle using Clip-Path */
+/* 
+   Logic for Straight Lines:
+   Height constant: 90px.
+   Width increases by 160px per layer (80px per side).
+   
+   Layer 1 (Top): Bottom Width 160px.
+   Layer 2: Bottom Width 320px. (Top 160px)
+   Layer 3: Bottom Width 480px. (Top 320px)
+   Layer 4: Bottom Width 640px. (Top 480px)
+*/
+
+.layer-top {
+    width: 160px;
+    height: 90px;
+    background: linear-gradient(90deg, #ef5350 50%, #c62828 50%);
+    /* 2-tone 3D */
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    z-index: 4;
+    padding-top: 30px;
+    /* Push text down */
+    align-items: flex-start;
+    /* Align text to top area */
+}
+
+.layer-protein {
+    width: 320px;
+    height: 90px;
+    background: linear-gradient(90deg, #ba68c8 50%, #8e24aa 50%);
+    /* Top width 160 is 50% of 320. Side gap is 25% */
+    clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%);
+    z-index: 3;
+}
+
+.layer-vitamins {
+    width: 480px;
+    height: 90px;
+    background: linear-gradient(90deg, #66bb6a 50%, #2e7d32 50%);
+    /* Top width 320 is 66.6% of 480. Side gap is 16.66% */
+    clip-path: polygon(16.66% 0, 83.33% 0, 100% 100%, 0% 100%);
+    z-index: 2;
+}
+
+.layer-carbs {
+    width: 640px;
+    height: 90px;
+    background: linear-gradient(90deg, #8d6e63 50%, #5d4037 50%);
+    /* Top width 480 is 75% of 640. Side gap is 12.5% */
+    clip-path: polygon(12.5% 0, 87.5% 0, 100% 100%, 0% 100%);
+    z-index: 1;
+}
+
+.layer-label {
+    pointer-events: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 10;
+}
+
+/* Specific text positioning for the triangle shapes */
+.layer-top .layer-label {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    width: 80px;
+    /* constrain width */
+}
+
+
+/* Foods Grid - Right Side */
+.foods-container {
+    flex: 1;
+    /* Take remaining width */
+    max-width: 500px;
+    /* Limit so it doesn't get too wide */
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    align-content: flex-start;
+    max-height: 500px;
+    overflow-y: auto;
+    /* Scroll if absolutely needed, but grid should fit mostly */
+    border: 2px solid #fff;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.food-item {
+    width: 70px;
+    /* Slightly smaller to fit more */
+    height: 70px;
+    background: #fff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-bottom: 3px solid #eee;
+}
+
+.food-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.food-item:active {
+    cursor: grabbing;
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.food-icon {
+    font-size: 2rem;
+    margin-bottom: 2px;
+}
+
+/* Feedback Animations */
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.correct-flash {
+    animation: pop 0.3s ease;
+}
+
+.incorrect-shake {
+    animation: shake 0.3s ease;
+}
+
+/* Checkmark overlay */
+.checkmark {
+    position: absolute;
+    color: green;
+    font-size: 3rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+    z-index: 10;
+}
+
+.show-check {
+    opacity: 1;
+    animation: pop 0.5s forwards;
+}
+
+.hidden {
+    display: none;
+}
+
+#message-area {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2e7d32;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+}
