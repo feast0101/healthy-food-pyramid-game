@@ -1,4 +1,4 @@
-# Healthy Eating Pyramid Game 🍎🥦🍞
+# Healthy Food Pyramid Game 🍎🥦🍞
 
 ## Objective
 The **Healthy Eating Pyramid Game** is an interactive, browser-based educational tool designed to teach children about nutrition and the importance of a balanced diet. 
@@ -22,6 +22,10 @@ The main goal is to help players identify and categorize different food items in
 3.  Drop it onto the correct colorful layer of the pyramid.
 4.  Listen for the "pop" (correct) or "buzz" (incorrect)!
 5.  Clear all items to win!
+
+## Source
+![USDA Food Pyramid](usda-pyramid.png)
+*Source: Original USDA Food Pyramid*
 
 ## Author
 **Kallol Das**
